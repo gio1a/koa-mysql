@@ -31,6 +31,8 @@
 
   - 安装`nodemon`
 
+    `npm i nodemon -D` 安装在devDependencies里面
+
   - 编写`package.json`脚本
 
     ```js
@@ -78,15 +80,13 @@
 
 ##### 2. 编写路由
 
-- 创建`src/router`牡蛎，编写`user.route.js`
+创建`src/router`，编写`user.route.js`
 
 ##### 3. 改写`main.js`
 
 导入`router`
 
 注册中间件
-
-
 
 ### 五、目录结构优化
 
@@ -99,10 +99,44 @@
 ##### 2. 将路由和控制器拆分
 
 - 路由：解析URL，分布给控制器对应的方法`user.router.js`
-
 - 控制器：处理不同的业务 `controller/user.controller.js`
 
-  
+
+
+### 六、解析body
+
+##### 1. 安装koa-body
+
+`npm i koa-body`
+
+##### 2. 注册中间件
+
+改写`app/index.js`
+
+```js
+const {koaBody} = require('koa-body')
+
+// koa-body本身是一个函数，所以要在所有路由处理之前注册这个中间件
+app.use(koaBody())
+```
+
+##### 3. 解析请求数据
+
+改写`controller`
+
+```js
+// 1.获取数据
+const {user_name, password} = ctx.request.body
+// 2.操作数据库
+const res = await createUser(user_name, password)
+console.log(res);
+// 3.返回结果
+ctx.body = ctx.request.body
+```
+
+##### 4. 拆分service层
+
+service层主要用于处理数据库
 
 ​    
 
