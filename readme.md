@@ -445,6 +445,8 @@ app.on('error', errHandler)
 
 在将密码保存到数据库之前，要对密码进行加密处理
 
+加盐加密
+
 ##### 1.安装bcrcyptjs
 
 
@@ -461,9 +463,15 @@ app.on('error', errHandler)
 
 
 
+### 十四、用户认证与授权
+
+登录成功后，会给用户办法令牌`token`，用户在以后的每一次请求中都会携带这个令牌。
+
+使用`jwt`
+
+##### 1. 安装`jsonwebtoken`
 
 
-​    
 
 ​    
 
