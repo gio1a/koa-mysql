@@ -5,10 +5,12 @@ const {
   tokenExpiredError,
   invalidToken,
   notBeforeError,
+  hasNotPermission
 } = require("../constant/err.type");
 
+// 认证
 const auth = async (ctx, next) => {
-  const { authorization } = ctx.request.headers;
+  const { authorization = '' } = ctx.request.headers;
   const token = authorization.replace("Bearer ", "");
 
   try {
@@ -30,6 +32,18 @@ const auth = async (ctx, next) => {
   await next();
 };
 
+// 授权
+const hasPermission = async (ctx, next) => {
+  const {is_admin} = ctx.state.user //先登录ctx.state.user才有值
+  if(!is_admin) {
+    console.error('该用户没有操作权限',ctx.state.user)
+    return ctx.app.emit('error', hasNotPermission, ctx)
+  }
+
+  await next()
+}
+
 module.exports = {
   auth,
+  hasPermission
 };
