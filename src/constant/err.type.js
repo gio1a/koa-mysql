@@ -59,6 +59,27 @@ module.exports = {
     message:'不支持的文件格式',
     result:''
   },
-  
+  goodsFormatError:{
+    code:'10203',
+    message:'商品发布的信息格式错误',
+    result:''
+  },
+  publishGoodsError:{
+    code:'10204',
+    message:'发布商品失败',
+    result:''
+  },
+  invalidGoodsId: {
+    code:'10205',
+    message:'无效的商品id',
+    result:''
+  },
+  addToCartError:{
+    code:'10206',
+    message:'添加到购物车失败',
+    result:''
+  }
+
+
 
 };

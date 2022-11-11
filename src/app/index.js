@@ -4,6 +4,7 @@ const path = require('path')
 const Koa = require('koa');
 const {koaBody} = require('koa-body')
 const KoaStatic = require('koa-static') 
+const parameter = require('koa-parameter') // 参数校验中间件
 
 const errHandler = require('./errHandler')
 const router = require('../router')
@@ -21,6 +22,8 @@ app.use(koaBody({
         keepExtensions:true
     }
 }))
+
+app.use(parameter(app)) // 在ctx原型上注册方法
 
 // 把该目录设置为静态资源文件夹
 app.use(KoaStatic(path.join(__dirname,'../upload'))) 
