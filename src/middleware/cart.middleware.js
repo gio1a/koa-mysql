@@ -1,18 +1,18 @@
-const { invalidGoodsId } = require("../constant/err.type")
+const { invalidGoodsId, cartFormatError } = require("../constant/err.type");
 
-const validator = async(ctx,next) => {
+const validator = (rules) => {
+  return async (ctx, next) => {
     try {
-        ctx.verifyParams({
-            goods_id: 'number' // 简写 等于{type:number,required:true}
-        })
+      ctx.verifyParams(rules);
     } catch (error) {
-        console.error(error)
-        invalidGoodsId.result = error
-        return ctx.app.emit('error',invalidGoodsId,ctx)
+      console.error(error);
+      cartFormatError.result = error;
+      return ctx.app.emit("error", cartFormatError, ctx);
     }
-    await next()
-}
+    await next();
+  };
+};
 
 module.exports = {
-    validator,
-}
+  validator,
+};

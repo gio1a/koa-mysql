@@ -75,8 +75,13 @@ module.exports = {
     result:''
   },
   addToCartError:{
-    code:'10206',
+    code:'10301',
     message:'添加到购物车失败',
+    result:''
+  },
+  cartFormatError:{
+    code:'10302',
+    message:'购物车数据格式错误',
     result:''
   }
 
