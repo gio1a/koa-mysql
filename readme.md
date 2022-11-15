@@ -1,8 +1,3 @@
-##### 项目课程 
-
--  [B站地址](https://www.bilibili.com/video/BV13A411w79h/?p=8&spm_id_from=333.1007.top_right_bar_window_history.content.click&vd_source=90ee0a6f382e91250b46aae870e6c912)
-- [Github地址](https://github.com/jj112358/node-api)
-
 
 
 ##### 数据库操作
